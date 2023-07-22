@@ -1,32 +1,22 @@
-'use client';
-import * as React from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../config/theme';
-import createEmotionCache from '../config/createEmotionCache';
+import Image from "next/image";
+import styles from "./page.module.css";
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
-
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
-
-export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+export default function Home() {
+  const total = 0;
   return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <main className={styles.main}>
+      <div className={styles.center}></div>
+      <div className={styles.grid}>
+        <h1>Expense Tracker</h1>
+        <h2>Total</h2>
+        <div>{total}</div>
+        <form>
+          <label>Expense Amount</label>
+
+          <input type="number" id="expense-amount" />
+          <button type="submit">Save Expense</button>
+        </form>
+      </div>
+    </main>
   );
 }
