@@ -8,6 +8,7 @@ export default function AddExpenseForm() {
     const description = target.elements.namedItem(
       "expenseDescription"
     ) as HTMLInputElement;
+
     const amount = target.elements.namedItem(
       "expenseAmount"
     ) as HTMLInputElement;
@@ -15,11 +16,12 @@ export default function AddExpenseForm() {
       description: String(description.value),
       amount: Number(amount.value),
     };
+
     try {
       const response = await fetch("/api/add-expense", {
-        method: "GET",
-        // body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        // headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       const responseData = await response.json();
       console.log("RESPONSE", responseData);
@@ -29,7 +31,7 @@ export default function AddExpenseForm() {
     } catch (error: any) {
       console.log(`There was a problem: ${error.message}`);
     }
-    console.log(data);
+    console.log("FORM DATA SENT", data);
   }
 
   return (
