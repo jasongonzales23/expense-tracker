@@ -1,11 +1,12 @@
+import { db, sql } from "@/lib/kysely";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const data = request.json();
+  const data = await request.json();
   // insert into DB
+  const addExpense = await db.insertInto("expenses").values([data]).execute();
+  console.log("inserted Expense record", data);
 
-  const parsed = JSON.stringify(data);
-  console.log(parsed);
   return NextResponse.json({ message: "ok" });
 }
 
