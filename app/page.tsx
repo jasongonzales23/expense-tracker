@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { sql } from "@vercel/postgres";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -8,8 +8,11 @@ export default function Home() {
       <div className={styles.center}></div>
       <div className={styles.grid}>
         <h1>Expense Tracker</h1>
-        <h2>Total</h2>
-        <div>{total}</div>
+      </div>
+      <div className={styles.grid}>
+        <h2>Total: {total}</h2>
+      </div>
+      <div className={styles.grid}>
         <form>
           <label>Expense Amount</label>
 
