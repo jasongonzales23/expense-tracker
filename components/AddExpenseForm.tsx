@@ -20,7 +20,6 @@ export default function AddExpenseForm() {
     try {
       const response = await fetch("/api/add-expense", {
         method: "POST",
-        // headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
