@@ -9,9 +9,3 @@ export async function POST(request) {
 
   return NextResponse.json({ message: "ok" });
 }
-
-// export async function GET() {
-//   return NextResponse.json({
-//     message: "hello",
-//   });
-// }

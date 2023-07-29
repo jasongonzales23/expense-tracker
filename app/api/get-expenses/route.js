@@ -2,7 +2,7 @@ import { db } from "@/lib/kysely";
 import { seed } from "@/lib/seed";
 import { NextResponse } from "next/server";
 
-export default async function Get() {
+export async function GET(request) {
   let expenses;
   let startTime = Date.now();
 
@@ -22,6 +22,5 @@ export default async function Get() {
     }
   }
 
-  return NextResponse.json({ message: "what up?" });
-  //   return NextResponse.json(expenses);
+  return NextResponse.json(expenses);
 }

@@ -1,8 +1,8 @@
 "use client";
 
 interface TotalIx {
-  total: number;
+  total: number | undefined;
 }
 export default function Total({ total }: TotalIx) {
-  return <h2>Total: {total}</h2>;
+  return <h2>Total: {total || "oops"}</h2>;
 }
