@@ -18,7 +18,7 @@ function useExpenses(): UseExpenses {
   const fetcher = (url: URL) => fetch(url).then((res) => res.json());
 
   const { data, isLoading, error, mutate }: SWRResponse<Expense[]> = useSWR(
-    "api/get-expenses",
+    "/api/get-expenses",
     fetcher
   );
 

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import styles from "../app/page.module.css";
 
 export default function AddExpenseForm({ mutate }: any) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -38,15 +39,24 @@ export default function AddExpenseForm({ mutate }: any) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="expenseDescription">Expense Description</label>
-
-        <input type="text" id="expenseDescription" name="expenseDescription" />
+      </div>
+      <div>
+        <input
+          className={styles.input}
+          type="text"
+          id="expenseDescription"
+          name="expenseDescription"
+        />
       </div>
       <div>
         <label htmlFor="expenseAmount">Expense Amount</label>
-
+      </div>
+      <div>
         <input type="number" id="expenseAmount" name="expenseAmount" />
       </div>
-      <button type="submit">Save Expense</button>
+      <button className={styles.button} type="submit">
+        Save Expense
+      </button>
     </form>
   );
 }
