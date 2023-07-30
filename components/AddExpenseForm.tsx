@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-export default function AddExpenseForm({ mutate }) {
+export default function AddExpenseForm({ mutate }: any) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const target = e.currentTarget;
