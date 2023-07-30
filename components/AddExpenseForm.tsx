@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-export default function AddExpenseForm() {
+export default function AddExpenseForm({ mutate }: any) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const target = e.currentTarget;
@@ -20,18 +20,18 @@ export default function AddExpenseForm() {
     try {
       const response = await fetch("/api/add-expense", {
         method: "POST",
-        // headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
-      console.log("RESPONSE", responseData);
+      description.value = "";
+      amount.value = "";
       if (!response.ok) {
         throw new Error(`Error status ${response.status}`);
       }
     } catch (error: any) {
       console.log(`There was a problem: ${error.message}`);
     }
-    console.log("FORM DATA SENT", data);
+    mutate();
   }
 
   return (
