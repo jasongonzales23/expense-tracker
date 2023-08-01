@@ -13,9 +13,9 @@ export async function GET(request) {
   try {
     expenses = await db
       .selectFrom("expenses")
+      //   .where("createdAt", ">=", firstday)
+      //   .where("createdAt", "<=", lastday)
       .selectAll()
-      .where("createdAt", ">=", firstday)
-      .where("createdAt", "<=", lastday)
       .execute();
   } catch (e) {
     if (e.message === `relation "expenses" does not exist`) {
