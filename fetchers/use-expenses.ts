@@ -16,9 +16,7 @@ type UseExpenses = {
 
 function useExpenses(): UseExpenses {
   const fetcher = (url: URL) =>
-    fetch(url, {
-      cache: "no-store",
-    }).then((res) => res.json());
+    fetch(url, { cache: "no-store" }).then((res) => res.json());
 
   const { data, isLoading, error, mutate }: SWRResponse<Expense[]> = useSWR(
     "/api/get-expenses",
