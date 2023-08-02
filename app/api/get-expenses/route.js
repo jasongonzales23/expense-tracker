@@ -13,8 +13,8 @@ export async function GET(request) {
   try {
     expenses = await db
       .selectFrom("expenses")
-      //   .where("createdAt", ">=", firstday)
-      //   .where("createdAt", "<=", lastday)
+      .where("createdAt", ">=", firstday)
+      .where("createdAt", "<=", lastday)
       .selectAll()
       .execute();
   } catch (e) {
