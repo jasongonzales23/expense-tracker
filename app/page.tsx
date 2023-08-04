@@ -10,7 +10,7 @@ export default function Home() {
 
   const total = expenses?.reduce((sum: number, { amount }) => sum + amount, 0);
   return (
-    <main className={"container mx-auto"}>
+    <main className="container mx-auto">
       <div>
         <h1>Expense Tracker</h1>
       </div>
