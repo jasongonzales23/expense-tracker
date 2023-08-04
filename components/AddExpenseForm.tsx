@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import styles from "../app/page.module.css";
+import { Card, Button, NumberInput, TextInput } from "@tremor/react";
+import { CurrencyDollarIcon, DocumentIcon } from "@heroicons/react/solid";
 
 export default function AddExpenseForm({ mutate }: any) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,27 +37,28 @@ export default function AddExpenseForm({ mutate }: any) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="expenseDescription">Expense Description</label>
-      </div>
-      <div>
-        <input
-          className={styles.input}
-          type="text"
+    <Card className="flex-1" decoration="top" decorationColor="blue">
+      <form onSubmit={handleSubmit}>
+        {/* <label htmlFor="expenseDescription">Expense Description</label> */}
+        <TextInput
+          className="mb-4"
+          icon={DocumentIcon}
+          placeholder="Description"
           id="expenseDescription"
           name="expenseDescription"
         />
-      </div>
-      <div>
-        <label htmlFor="expenseAmount">Expense Amount</label>
-      </div>
-      <div>
-        <input type="number" id="expenseAmount" name="expenseAmount" />
-      </div>
-      <button className={styles.button} type="submit">
-        Save Expense
-      </button>
-    </form>
+        <div>{/* <label htmlFor="expenseAmount">Expense Amount</label> */}</div>
+        <NumberInput
+          className="mb-4"
+          icon={CurrencyDollarIcon}
+          placeholder="Amount..."
+          id="expenseAmount"
+          name="expenseAmount"
+        />
+        <Button size="xl" type="submit" className="w-full">
+          Save Expense
+        </Button>
+      </form>
+    </Card>
   );
 }
