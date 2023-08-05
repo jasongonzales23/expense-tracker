@@ -13,7 +13,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="h-full bg-gray-50">
         <Flowbite theme={{ theme: customTheme }}>
-          <Navigation active={true} />
+          <Navigation />
           {children}
         </Flowbite>
       </body>
