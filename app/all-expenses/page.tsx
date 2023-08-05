@@ -11,8 +11,7 @@ export default function Home() {
   const total = expenses?.reduce((sum: number, { amount }) => sum + amount, 0);
   return (
     <main className="container p-4 md:p-10 mx-auto max-w-7xl">
-      <Total className="mb-4" total={total} />
-      <AddExpenseForm mutate={mutate} />
+      <h1>All Expenses</h1>
     </main>
   );
 }

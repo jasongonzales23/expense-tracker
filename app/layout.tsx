@@ -1,13 +1,8 @@
+"use client";
+import { Flowbite } from "flowbite-react";
+import Navigation from "@/components/Navigation";
+import customTheme from "./custom-theme";
 import "./globals.css";
-import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
-
-// const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Expense Tracker",
-  description: "It tracks expenses",
-};
 
 export default function RootLayout({
   children,
@@ -16,7 +11,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-full bg-gray-50">{children}</body>
+      <body className="h-full bg-gray-50">
+        <Flowbite theme={{ theme: customTheme }}>
+          <Navigation />
+          {children}
+        </Flowbite>
+      </body>
     </html>
   );
 }
