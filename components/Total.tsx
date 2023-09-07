@@ -5,8 +5,9 @@ interface TotalIx {
   total: number | undefined;
   className: string;
 }
+const BUDGET = 3300;
 export default function Total({ total, className }: TotalIx) {
-  const remaining = total ? 3300 - total : total;
+  const remaining = total ? BUDGET - total : total;
   return (
     <Card className={className} decoration="top" decorationColor="green">
       <Text>Remaining Budget</Text>
