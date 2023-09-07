@@ -6,10 +6,11 @@ interface TotalIx {
   className: string;
 }
 export default function Total({ total, className }: TotalIx) {
+  const remaining = total ? 3300 - total : total;
   return (
     <Card className={className} decoration="top" decorationColor="green">
-      <Text>Total</Text>
-      {total ? <Metric>{`$${total}`}</Metric> : <Metric>...Loading</Metric>}
+      <Text>Remaining Budget</Text>
+      {total ? <Metric>{`$${remaining}`}</Metric> : <Metric>...Loading</Metric>}
     </Card>
   );
 }
