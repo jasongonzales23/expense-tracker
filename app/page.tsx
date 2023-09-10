@@ -3,7 +3,6 @@
 import AddExpenseForm from "@/components/AddExpenseForm";
 import Total from "@/components/Total";
 import useExpenses from "@/fetchers/use-expenses";
-import { Title } from "@tremor/react";
 
 export default function Home() {
   const { expenses, isLoading, isError, mutate } = useExpenses();
