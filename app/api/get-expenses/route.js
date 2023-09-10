@@ -17,6 +17,7 @@ export async function GET(request) {
       .selectAll()
       .where("createdAt", "<=", lastday)
       .where("createdAt", ">=", firstday)
+      .orderBy("createdAt", "desc")
       .execute();
   } catch (e) {
     if (e.message === `relation "expenses" does not exist`) {
