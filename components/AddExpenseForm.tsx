@@ -1,22 +1,28 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button, NumberInput, TextInput } from "@tremor/react";
 import { CurrencyDollarIcon, DocumentIcon } from "@heroicons/react/solid";
 
-export default function AddExpenseForm({ mutate }: any) {
+export default function AddExpenseForm(this: any, { mutate }: any) {
+  const defaultFormState = {
+    amount: "",
+    description: "",
+  };
+  const [formState, setFormState] = useState(defaultFormState);
+
+  const handleChange = (evt: React.ChangeEvent) => {
+    const input = evt.target as HTMLInputElement;
+    const value = input.value;
+    setFormState({
+      ...formState,
+      [input.name]: value,
+    });
+  };
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const target = e.currentTarget;
-    const description = target.elements.namedItem(
-      "expenseDescription"
-    ) as HTMLInputElement;
-
-    const amount = target.elements.namedItem(
-      "expenseAmount"
-    ) as HTMLInputElement;
     const data = {
-      description: String(description.value),
-      amount: Number(amount.value),
+      description: String(formState.description),
+      amount: Number(formState.amount),
     };
 
     try {
@@ -25,8 +31,7 @@ export default function AddExpenseForm({ mutate }: any) {
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
-      description.value = "";
-      amount.value = "";
+      setFormState(defaultFormState);
       if (!response.ok) {
         throw new Error(`Error status ${response.status}`);
       }
@@ -44,16 +49,20 @@ export default function AddExpenseForm({ mutate }: any) {
           className="mb-4"
           icon={DocumentIcon}
           placeholder="Description"
-          id="expenseDescription"
-          name="expenseDescription"
+          id="description"
+          name="description"
+          value={formState.description}
+          onChange={handleChange}
         />
         <div>{/* <label htmlFor="expenseAmount">Expense Amount</label> */}</div>
         <NumberInput
           className="mb-4"
           icon={CurrencyDollarIcon}
           placeholder="Amount..."
-          id="expenseAmount"
-          name="expenseAmount"
+          id="amount"
+          name="amount"
+          value={formState.amount}
+          onChange={handleChange}
         />
         <Button size="xl" type="submit" className="w-full">
           Save Expense
