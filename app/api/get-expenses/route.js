@@ -5,8 +5,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
   let expenses;
-  // TODO FML there's a timezone issue and
-  // some results are incorrectly being filtered
   const today = new Date();
   const firstday = new Date(today.getFullYear(), today.getMonth(), 1);
   const lastday = new Date(today.getFullYear(), today.getMonth() + 1, 0);
